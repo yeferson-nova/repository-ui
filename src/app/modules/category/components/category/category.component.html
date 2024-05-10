@@ -12,7 +12,7 @@
         <div class="rightbtn">
             <ul>
                 <li>
-                    <button mat-raised-button color="primary">Agregar Catería</button>
+                    <button mat-raised-button color="primary" (click)="openCategoryDialog()">Agregar Catería</button>
                 </li>
             </ul>
         </div>
@@ -61,6 +61,5 @@
             </table>
             <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
         </mat-card-content>
-
     </div>
 </mat-card>

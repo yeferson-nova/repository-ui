@@ -35,6 +35,26 @@ export class CategoryComponent implements OnInit {
       }
     );
   }
+  categoriesActives() {
+    this.categoryServices.getCategoriesStatus(true).subscribe(
+      (data: any) => {
+        this.processCategoriesResponse(data);
+      },
+      (error: any) => {
+        console.log("error: ", error);
+      }
+    );
+  }
+  categoriesInactive() {
+    this.categoryServices.getCategoriesStatus(false).subscribe(
+      (data: any) => {
+        this.processCategoriesResponse(data);
+      },
+      (error: any) => {
+        console.log("error: ", error);
+      }
+    );
+  }
 
   processCategoriesResponse(resp: any) {
     const dataCategory: CategoryElement[] = [];
@@ -60,10 +80,28 @@ export class CategoryComponent implements OnInit {
     });
   }
 
+  edit(id: number, name: string, description: string, status: boolean) {
+    const dialogRef = this.dialog.open(NewCategoryComponent, {
+      width: '450px',
+      data: { id: id, name: name, description: description, status: status }
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result == 1) {
+        this.openSnackBar("Categoria Actualizada", "Exitosa");
+        this.getCategoriesStatus(true);
+      } else if (result == 2) {
+
+        this.openSnackBar("error en la edición", "Error")
+      }
+    });
+  }
+
   openSnackBar(message: string, action: string): MatSnackBarRef<SimpleSnackBar> {
     return this.snackBar.open(message, action, {
       duration: 5000,
     });
+
   }
 }
 

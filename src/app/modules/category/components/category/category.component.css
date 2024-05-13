@@ -1,0 +1,25 @@
+.alinear {
+    text-align: center;
+    margin-top: 20px;
+}
+
+ul li {
+    list-style: none;
+}
+
+.rightbtn {
+    margin-left: auto;
+}
+
+table {
+    width: 100%;
+}
+
+mat-form-field {
+    width: 240%;
+}
+
+.mat-cell:nth-chield(1),
+.mat-header-cell:nth-chield(1) {
+    flex: 0 0 6%;
+}

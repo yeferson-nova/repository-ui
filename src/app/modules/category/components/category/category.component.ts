@@ -5,6 +5,7 @@ import { CategoryElement } from './category-interface';
 import { MatDialog } from '@angular/material/dialog';
 import { NewCategoryComponent } from '../new-category/new-category.component';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import { ConfirmComponent } from '../../../shared/components/confirm/confirm.component';
 
 @Component({
   selector: 'app-category',
@@ -102,6 +103,22 @@ export class CategoryComponent implements OnInit {
       duration: 5000,
     });
 
+  }
+
+  delete(id: any) {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: '450px',
+      data: { id: id }
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result == 1) {
+        this.openSnackBar("Categoria Eliminada", "Exitosa");
+        this.getCategoriesStatus(true);
+      } else if (result == 2) {
+        this.openSnackBar("error en la eliminar", "Error")
+      }
+    });
   }
 }
 

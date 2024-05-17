@@ -11,6 +11,24 @@ ul li {
     margin-left: auto;
 }
 
+.lefbtn {
+    margin-left: 0;
+}
+
+.lefbtn .activo {
+    margin-right: 15px;
+}
+
+.activo {
+    background-color: #005f00;
+    color: #ffffff;
+}
+
+.inactivo {
+    background-color: #727272;
+    color: #ffffff;
+}
+
 table {
     width: 100%;
 }

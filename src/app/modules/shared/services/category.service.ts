@@ -41,4 +41,9 @@ export class CategoryService {
     return this.http.delete(endpoint, { responseType: 'text' });
   }
 
+  searchForId(id: any) {
+    const endpoint = `${base_url}/categories/${id}`;
+    return this.http.get(endpoint);
+  }
+
 }

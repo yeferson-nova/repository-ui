@@ -120,6 +120,16 @@ export class CategoryComponent implements OnInit {
       }
     });
   }
+
+  buscarId(termino: String) {
+    if (termino.length === 0) {
+      return this.getCategoriesStatus(true);
+    } else {
+      this.categoryServices.searchForId(termino).subscribe((resp: any) => {
+        this.processCategoriesResponse(resp);
+      })
+    }
+  }
 }
 
 
